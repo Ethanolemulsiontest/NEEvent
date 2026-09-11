@@ -6,24 +6,31 @@ public class PlayerMovment : MonoBehaviour
     public float playerSpeed;
 
     private Rigidbody2D rb;
+    private Animator animator;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
-        if (movementJoystick.Direction != Vector2.zero)
+        Vector2 direction = movementJoystick.Direction;
+
+        // Movement
+        if (direction != Vector2.zero)
         {
-            rb.linearVelocity = new Vector2(
-                movementJoystick.Direction.x * playerSpeed,
-                movementJoystick.Direction.y * playerSpeed
-            );
+            rb.linearVelocity = direction * playerSpeed;
         }
         else
         {
             rb.linearVelocity = Vector2.zero;
         }
+
+        // Animation
+        animator.SetFloat("MoveX", direction.x);
+        animator.SetFloat("MoveY", direction.y);
+        animator.SetBool("IsMoving", direction != Vector2.zero);
     }
 }
