@@ -41,8 +41,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 1
+  - name: Ground
     uniqueID: 4234715695
+    locked: 0
+  - name: Buildings
+    uniqueID: 1496747061
+    locked: 0
+  - name: Props
+    uniqueID: 2371314471
+    locked: 0
+  - name: Characters
+    uniqueID: 1678338851
     locked: 0
   m_RenderingLayers:
   - Default
