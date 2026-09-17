@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878568d50a721c74e8dcd2f6e881b136, type: 3}
+  m_Name: VillagerDialogue
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  npcName: 'Villager '
+  npcPortrait: {fileID: -7527145504033472756, guid: e2395a6f08f785340a33792e5ac24061, type: 3}
+  dialogueLines:
+  - Beware, the Japanese could be watching us from anywhere!
+  - Hope this war ends soon....
+  autoProgressLines: 
+  autoProgressDelay: 1.5
+  typingSpeed: 0
+  voiceSound: {fileID: 8300000, guid: b8240c1f9619ed24487feb8777e44cdd, type: 3}
+  voicePitch: 1
