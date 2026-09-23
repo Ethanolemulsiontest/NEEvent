@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 548a73f42430f4f42b884383a5ddd330
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Create Team.unity
+    guid: c93e72ad55997c0479973df2eeef5154
+  - enabled: 1
+    path: Assets/Scenes/Team scene.unity
+    guid: a61e6d38fdcf0154bb477b575114883c
+  - enabled: 1
+    path: Assets/Scenes/Join Team.unity
+    guid: 16a828bed064aca4ebc45e84b2dc827f
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: e547e78da198209439484e22c642c1d0, type: 2}
