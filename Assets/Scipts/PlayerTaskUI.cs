@@ -15,7 +15,7 @@ public class PlayerTaskUI : MonoBehaviour
 
     private void Start()
     {
-        // Wait until the end of Start before displaying
+        // Wait for PlayerRole and PlayerTasks to finish assigning
         Invoke(nameof(UpdateUI), 0.1f);
     }
 
@@ -38,9 +38,9 @@ public class PlayerTaskUI : MonoBehaviour
 
         if (playerTasks.currentTasks.Count >= 3)
         {
-            task1Text.text = "- " + playerTasks.currentTasks[0];
-            task2Text.text = "- " + playerTasks.currentTasks[1];
-            task3Text.text = "- " + playerTasks.currentTasks[2];
+            task1Text.text = "- " + playerTasks.currentTasks[0].taskName;
+            task2Text.text = "- " + playerTasks.currentTasks[1].taskName;
+            task3Text.text = "- " + playerTasks.currentTasks[2].taskName;
 
             Debug.Log("Task UI updated successfully!");
         }

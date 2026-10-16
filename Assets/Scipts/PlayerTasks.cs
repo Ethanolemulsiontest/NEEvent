@@ -6,7 +6,7 @@ public class PlayerTasks : MonoBehaviour
     private PlayerRole playerRole;
 
     [Header("Player's 3 Tasks")]
-    public List<string> currentTasks = new List<string>();
+    public List<TaskData> currentTasks = new List<TaskData>();
 
     private void Awake()
     {
@@ -15,12 +15,13 @@ public class PlayerTasks : MonoBehaviour
 
     public void AssignThreeTasks()
     {
-        List<string> taskPool = GetTaskPool();
+        List<TaskData> taskPool = GetTaskPool();
 
         currentTasks.Clear();
 
-        // Pick 3 unique random tasks
-        for (int i = 0; i < 3; i++)
+        int amount = Mathf.Min(3, taskPool.Count);
+
+        for (int i = 0; i < amount; i++)
         {
             int randomIndex = Random.Range(0, taskPool.Count);
 
@@ -30,73 +31,90 @@ public class PlayerTasks : MonoBehaviour
 
         Debug.Log("Role: " + playerRole.currentRole);
 
-        foreach (string task in currentTasks)
+        foreach (TaskData task in currentTasks)
         {
-            Debug.Log("Task: " + task);
+            Debug.Log("Task: " + task.taskName);
         }
     }
 
-    private List<string> GetTaskPool()
+    private List<TaskData> GetTaskPool()
     {
-        List<string> tasks = new List<string>();
+        List<TaskData> tasks = new List<TaskData>();
 
         switch (playerRole.currentRole)
         {
-            // =====================
-            // FOOD GATHERER
-            // =====================
             case PlayerRole.Role.FoodGatherer:
 
-                tasks.Add("Harvest Crops");
-                tasks.Add("Plant New Crops");
-                tasks.Add("Collect Eggs");
-                tasks.Add("Feed the Chickens");
-                tasks.Add("Draw Water");
-                tasks.Add("Search for Food");
-                tasks.Add("Gather Firewood");
-                tasks.Add("Deliver Food");
-                tasks.Add("Prepare Rations");
+                tasks.Add(new TaskData(TaskID.HarvestCrops, "Harvest Crops"));
+                tasks.Add(new TaskData(TaskID.PlantCrops, "Plant New Crops"));
+                tasks.Add(new TaskData(TaskID.CollectEggs, "Collect Eggs"));
+                tasks.Add(new TaskData(TaskID.FeedChickens, "Feed the Chickens"));
+                tasks.Add(new TaskData(TaskID.DrawWater, "Draw Water"));
+                tasks.Add(new TaskData(TaskID.SearchForFood, "Search for Food"));
+                tasks.Add(new TaskData(TaskID.GatherFirewood, "Gather Firewood"));
+                tasks.Add(new TaskData(TaskID.DeliverFood, "Deliver Food"));
+                tasks.Add(new TaskData(TaskID.PrepareRations, "Prepare Rations"));
 
                 break;
 
-
-            // =====================
-            // CRAFTSMAN
-            // =====================
             case PlayerRole.Role.Craftsman:
 
-                // Add your 9 Craftsman tasks here
-                tasks.Add("Gather Wood");
-                tasks.Add("Gather Scrap");
-                tasks.Add("Craft Tools");
-                tasks.Add("Build Storage Crate");
-                tasks.Add("Make Farming Tools");
-                tasks.Add("Craft Water Bucket");
-                tasks.Add("Prepare Building Materials");
-                tasks.Add("Craft Medical Supplies");
-                tasks.Add("Deliver Supplies");
+                tasks.Add(new TaskData(TaskID.GatherWood, "Gather Wood"));
+                tasks.Add(new TaskData(TaskID.GatherScrap, "Gather Scrap"));
+                tasks.Add(new TaskData(TaskID.CraftTools, "Craft Tools"));
+                tasks.Add(new TaskData(TaskID.BuildStorageCrate, "Build Storage Crate"));
+                tasks.Add(new TaskData(TaskID.MakeFarmingTools, "Make Farming Tools"));
+                tasks.Add(new TaskData(TaskID.CraftWaterBucket, "Craft Water Bucket"));
+                tasks.Add(new TaskData(TaskID.PrepareBuildingMaterials, "Prepare Building Materials"));
+                tasks.Add(new TaskData(TaskID.CraftMedicalSupplies, "Craft Medical Supplies"));
+                tasks.Add(new TaskData(TaskID.DeliverSupplies, "Deliver Supplies"));
 
                 break;
 
-
-            // =====================
-            // MEDIC
-            // =====================
             case PlayerRole.Role.Medic:
 
-                tasks.Add("Gather Medicinal Herbs");
-                tasks.Add("Collect Clean Water");
-                tasks.Add("Prepare Medicine");
-                tasks.Add("Prepare Bandages");
-                tasks.Add("Treat a Patient");
-                tasks.Add("Deliver Medicine");
-                tasks.Add("Check Villagers");
-                tasks.Add("Restock Clinic");
-                tasks.Add("Prepare Emergency Kit");
+                tasks.Add(new TaskData(TaskID.GatherMedicinalHerbs, "Gather Medicinal Herbs"));
+                tasks.Add(new TaskData(TaskID.CollectCleanWater, "Collect Clean Water"));
+                tasks.Add(new TaskData(TaskID.PrepareMedicine, "Prepare Medicine"));
+                tasks.Add(new TaskData(TaskID.PrepareBandages, "Prepare Bandages"));
+                tasks.Add(new TaskData(TaskID.TreatPatient, "Treat a Patient"));
+                tasks.Add(new TaskData(TaskID.DeliverMedicine, "Deliver Medicine"));
+                tasks.Add(new TaskData(TaskID.CheckVillagers, "Check Villagers"));
+                tasks.Add(new TaskData(TaskID.RestockClinic, "Restock Clinic"));
+                tasks.Add(new TaskData(TaskID.PrepareEmergencyKit, "Prepare Emergency Kit"));
 
                 break;
         }
 
         return tasks;
+    }
+
+    // Called by locations when the player performs a task
+    public void CompleteTask(TaskID taskID)
+    {
+        foreach (TaskData task in currentTasks)
+        {
+            if (task.id == taskID && !task.completed)
+            {
+                task.completed = true;
+
+                Debug.Log("Completed: " + task.taskName);
+                return;
+            }
+        }
+
+        Debug.Log("Player does not have this task.");
+    }
+
+    // Check if player currently has a task
+    public bool HasTask(TaskID taskID)
+    {
+        foreach (TaskData task in currentTasks)
+        {
+            if (task.id == taskID && !task.completed)
+                return true;
+        }
+
+        return false;
     }
 }
