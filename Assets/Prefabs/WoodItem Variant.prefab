@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: ID
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -4021539914562899331, guid: 9a35109f9495c7646adbb440fcf917c9, type: 3}
+      propertyPath: Name
+      value: Wood
+      objectReference: {fileID: 0}
     - target: {fileID: 1533228643462280226, guid: 9a35109f9495c7646adbb440fcf917c9, type: 3}
       propertyPath: m_Name
       value: WoodItem Variant
@@ -158,8 +162,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1923652825
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -105342862, guid: cca284b556077a14ba806f7e131fc0e5, type: 3}
