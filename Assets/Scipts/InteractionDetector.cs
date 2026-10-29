@@ -16,7 +16,11 @@ public class InteractionDetector : MonoBehaviour
         if(context.performed)
         {
             interactableInrange?.Interact();
-        }    
+            if (!interactableInrange.CanInteract())
+            {
+                interactionIcon.SetActive(false);
+            }
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
