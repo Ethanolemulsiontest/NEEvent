@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -4021539914562899331}
   - component: {fileID: 2359802408048193349}
   - component: {fileID: 2671237663960353603}
+  - component: {fileID: 4214177795469126633}
   m_Layer: 5
   m_Name: Item
   m_TagString: Item
@@ -104,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6db1ee2d23bc724e92f7abdb578ed64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  minDropDistance: 2
+  maxDropDistance: 3
 --- !u!114 &-4021539914562899331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,3 +217,18 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &4214177795469126633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533228643462280226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1065601f952fd6a41a4d2d7f8b7b43fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  bounceHeight: 0.3
+  bounceDuration: 0.4
+  bounceCount: 2
