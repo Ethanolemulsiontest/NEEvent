@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerTasks : MonoBehaviour
 {
@@ -8,9 +9,22 @@ public class PlayerTasks : MonoBehaviour
     [Header("Player's 3 Tasks")]
     public List<TaskData> currentTasks = new List<TaskData>();
 
+    [Header("Player Coins")]
+    public int coins = 0;
+
+    [Header("Coin UI")]
+    public TMP_Text coinText;
+
+    public int coinsPerTask = 10;
+
     private void Awake()
     {
         playerRole = GetComponent<PlayerRole>();
+    }
+
+    private void Start()
+    {
+        UpdateCoinUI();
     }
 
     public void AssignThreeTasks()
@@ -98,7 +112,14 @@ public class PlayerTasks : MonoBehaviour
             {
                 task.completed = true;
 
+                // Reward player with coins
+                coins += coinsPerTask;
+                UpdateCoinUI();
+
                 Debug.Log("Completed: " + task.taskName);
+                Debug.Log("Coins earned: +" + coinsPerTask);
+                Debug.Log("Total coins: " + coins);
+
                 return;
             }
         }
@@ -116,5 +137,13 @@ public class PlayerTasks : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void UpdateCoinUI()
+    {
+        if (coinText != null)
+        {
+            coinText.text = "Coins: " + coins;
+        }
     }
 }
