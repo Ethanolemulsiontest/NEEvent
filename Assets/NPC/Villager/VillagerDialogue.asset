@@ -10,15 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 878568d50a721c74e8dcd2f6e881b136, type: 3}
-  m_Name: VillagerDialogue
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   npcName: 'Villager '
   npcPortrait: {fileID: -7527145504033472756, guid: e2395a6f08f785340a33792e5ac24061, type: 3}
   dialogueLines:
   - Beware, the Japanese could be watching us from anywhere!
-  - Hope this war ends soon....
-  autoProgressLines: 
+  - 'Can you help me with a simple task? '
+  - Thanks! I knew i could count on you!
+  - Please deliver 1 Wood to me!
+  - Oh.. Ok..
+  - Hope you change your mind..
+  - Good Luck getting the wood!
+  - Thank you for the wood!
+  autoProgressLines: 00y
+  endDialogueLines: 0000000100010101y
   autoProgressDelay: 1.5
   typingSpeed: 0
   voiceSound: {fileID: 8300000, guid: b8240c1f9619ed24487feb8777e44cdd, type: 3}
   voicePitch: 1
+  choices:
+  - dialogueIndex: 1
+    choices:
+    - Yes
+    - No
+    nextDialogueIndexes: 0200000004000000i
+    givesQuest: 0100y
+  questInProgressIndex: 6
+  questCompletedIndex: 7
+  quest: {fileID: 11400000, guid: 0dd1c529efddf9e4faddf73c797d8718, type: 2}
